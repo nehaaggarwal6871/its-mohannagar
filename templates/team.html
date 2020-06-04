@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filter_tag %}
+
+{% block header %}
+<style>
+/*For Nav Bar Active Element Displaying the current page*/
+
+ul.nav_element span.nav-active4{
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 5px;
+}
+
+.team-after{
+    color: #000 !important;
+}
+
+div.nav-drop-down li.drop-active1{
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.about-after{
+    color: #000 !important;
+}
+
+.page-header{
+    --headerBack: url("{% static 'assets/background/team-back.jpg' %}");
+}
+
+/*For Nav Bar Active Element Displaying the current page----------------*/
+</style>
+
+<link href="{% static 'css/team.css' %}" rel="stylesheet" />
+
+{% endblock %}
+
+
+{% block content %}
+
+<!--Spacing Block-->
+<div class="spacing-7"></div>
+<!--For Spacing after the navbar as it's position is fixed-->
+
+
+<!---->
+<div class="page-header">
+    <div class="page-header-inner">
+        KNOW OUR TEAM
+    </div>
+</div>
+<!---->
+
+
+<!--Spacing Block_______________________-->
+<div class="container">
+    
+    <div class="page-heading">
+        Our Precious <span style="color: #1a73e8;">Team</span>
+    </div>
+
+
+    <Br>
+    <div class="MainTeamDiv">
+        {% for lead in teamMember %}
+        
+        {% if lead.authorised == True %}
+
+        <div class="teamMemberDiv">
+            <div class="memberImage">
+                <div class="memberImageInner">
+                    <div class="member-image-container" style="background-image: url('{{lead.profile_picture|profile_pic }}');"></div>
+                </div>
+            </div>
+            <br>
+            <div class="team-page-member-name"> {{ lead.first_name }} {{ lead.last_name|lastname }} </div>
+            <div class="team-page-member-desc"> {{ lead.designation }} </div>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="spacing-4"></div>
+
+
+</div>
+{% endblock %}

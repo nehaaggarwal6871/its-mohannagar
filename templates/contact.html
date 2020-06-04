@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+
+<style>
+/*For Nav Bar Active Element Displaying the current page*/
+ul.nav_element span.nav-active3{
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+.more-after{
+    color: #000 !important;
+}
+#drop_contact2{
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+@media screen and (max-width: 1045px){
+    ul.nav_element span.nav-active4{
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 5px;
+    }
+}
+
+.about-after{
+    color: #000 !important;
+}
+
+.page-header{
+    --headerBack: url("{% static 'assets/background/contact-back.jpg' %}");
+}
+
+/*For Nav Bar Active Element Displaying the current page----------------*/
+</style>
+
+<link href="{% static 'css/contact.css' %}" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+
+{% block content %}
+
+<!--Spacing Block-->
+<div class="spacing-7"></div>
+<!--For Spacing after the navbar as it's position is fixed-->
+
+
+<!---->
+<div class="page-header">
+    <div class="page-header-inner">
+        CONTACT
+    </div>
+</div>
+<!---->
+
+
+<!--Spacing Block_______________________-->
+<div class="container">
+    <div class="spacing-1"></div>
+
+    <div class="page-heading">
+        Know Our <span style="color: #1a73e8;">Current Location</span>
+    </div>
+
+    <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14007.7297691681!2d77.1164821!3d28.6317868!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x68966aea6bc15b7e!2sGuru+Tegh+Bahadur+Institute+of+Technology!5e0!3m2!1sen!2sin!4v1564767922523!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div style="color: #666;margin: 1em;">
+            <h1 style="font-family: google-sans-bold; color: #1a73e8;">Guru Tegh Bahadur Institute of Technology</h1>
+            <h2>
+                G-8 Area, Press Colony,<br>
+                Rajouri Garden, New Delhi,<Br> Delhi 110064
+            </h2>
+        </div>
+    </div>
+    
+    <div class="page-heading">
+        Get In <span style="color: #1a73e8;">Touch With Us</span>
+    </div>
+    
+    <div class="contact_grid">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="contact_form">
+                <label class="contact_label"> Your Name: </label>
+                <input type="text" class="contact_input" name="name" placeholder="Type Your Full Name" required />
+                
+                <label class="contact_label"> Your E-Mail ID: </label>
+                <input type="email" class="contact_input" name="email" placeholder="Type Your E-Mail ID" required />
+                
+                <label class="contact_label"> Your Mobile Number: </label>
+                <input type="number" class="contact_input" name="phone" placeholder="Enter Your Contact Number" min="6666666666" max="9999999999" />
+                
+                <label class="contact_label"> Your Query: </label>
+                <textarea class="contact_textArea" name="query" placeholder="Please Feel Free To Ask For Help" required></textarea>
+
+                <input type="submit" class="contact_submit" value="Submit Query" />
+            </div>
+        </form>
+
+        <div>
+            
+        </div>
+
+    </div>
+
+    <div class="spacing-3"> </div>
+</div>
+
+{% if messageStatus == "200" %}
+<script>
+alert("Your Query has been sent.")
+</script>
+{% else %}
+{% endif %}
+
+
+{% endblock %}

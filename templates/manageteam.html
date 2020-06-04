@@ -1,0 +1,59 @@
+{% extends 'user.html' %}
+{% load static %}
+
+{% block right_pane %}
+<style>
+
+    .left-active6{
+        background: rgba(0,0,0,0.1);
+    }
+
+    @media screen and (max-width: 992px){
+        .left-active2,.left-active1,.left-active3,.left-active4,.left-active5,.left-active7{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 670px){
+        .hide-at{
+            display: none;
+        }
+    }
+    @media screen and (max-width: 510px){
+        .hide-at1{
+            display: none;
+        }
+    }
+</style>
+<link href="{% static 'css/manageteam.css' %}" rel="stylesheet" />
+
+<h1>Team <span style="color:#1a73e8">Console</span></h1>
+<div style="padding: 0.5em;overflow-x: scroll;">
+    <table>
+        <tr class="thisnot">
+            <th class="hide-at1">Name</th>
+            <th>Username</th>
+            <th class="hide-at">Email-ID</th>
+            <th>Edit Member</th>
+        </tr>
+
+        {% for team in allTeam %}
+        <tr>
+            <td class="hide-at1"> {{ team.first_name }} </td>
+            <td> {{ team.username }} </td>
+            <td class="hide-at"> {{ team.email }} </td>
+            <td>
+                <form method="POST" action="{% url 'singleMember' %}">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{team.username}}" name="postid" />
+                    &nbsp;&nbsp;<input type="submit" value="Edit" class="editMember" />
+                </form>
+            </td>
+        </tr>
+        
+        <tr><td>&nbsp;</td></tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}

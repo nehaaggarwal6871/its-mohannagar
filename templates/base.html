@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+
+    <!--Meta Blocks-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="title" content="{{meta_title}}" />
+    <meta name="description" content="{{meta_description}}" />
+    <!--Meta Blocks____________________-->
+
+
+    <!--Styling-->
+    <style>
+    @font-face {
+        font-family: "google-sans-light";
+        src: url("{% static 'assets/google-sans/ProductSans-Light.woff' %}") format("woff");
+    }
+    @font-face {
+        font-family: "google-sans-bold";
+        src: url("{% static 'assets/google-sans/ProductSans-Bold.woff' %}") format("woff");
+    }
+    </style>
+    <!--Styling_____________-->
+
+
+    <!--Links-->
+    <link rel="icon" href="{% static 'assets/logo/Logo.jpg' %}" />
+    <link rel="stylesheet" href="{% static 'css/BaseNavBar.css' %}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" />
+    <!--Links____________________________-->
+
+
+    <!--Title-->
+    <title>{{title}}</title>
+    <!--Title___________________________-->
+
+
+    <!--Scripts-->
+    <!-- <script src="https://kit.fontawesome.com/b72052645a.js"></script> -->
+    <!--Scripts____________________-->
+
+
+    <!--Header Block-->
+    {% block header %}
+    {% endblock %}
+    <!--Header Block________________________-->
+
+
+</head>
+<body>
+
+
+    <!--Developer Information-->
+
+    
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/devPost.css' %}" />
+
+    
+    <div class="dev-icon" id="dev-icon">
+        <img src="{% static 'assets/logo/dev-info.jpg' %}" class="dev-icon-image" id="dev-icon-image" width="100%" alt="Raghav Dhingra | HelloWorld"/>
+        <div class="developer_name">
+            <span class="animdev">D</span>
+            <span class="animdev">E</span>
+            <span class="animdev">V</span>
+            <span class="animdev">E</span>
+            <span class="animdev">L</span>
+            <span class="animdev">O</span>
+            <span class="animdev">P</span>
+            <span class="animdev">E</span>
+            <span class="animdev">R</span>
+        </div>
+    </div>
+
+    <div class="dev-container-overlay none" id="dev-container-overlay">
+        <div class="dev-container">
+            <div class="none" id="dev-container-content">
+                <center>
+                    <div>
+                        <div class="animTopToBottom developer-top-heading">
+                            <b>Website Developer</b>
+                        </div>
+                        <div class="animTopToBottom developer-image-container">
+                            <div class="developer-popUp-image" style="background-image: url('{{ developer.profile_picture }}');"></div>
+                        </div>
+                        <div class="animTopToBottom">
+                            <a href="https://raghavdhingra.com">
+                                <div class="raghav"> {{developer.first_name}} {{developer.last_name}} </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="animTopToBottom">
+                        <div class="developer-know-more-text">Know More About me:</div>
+                        <div class="developer-links">
+                            <a href="https://raghavdhingra.com" title="FACEBOOK"><i class="fas fa-globe"></i></a>                        
+                            <a href="https://www.linkedin.com/in/raghav-dhingra/" title="LINKEDIN"><i class="fab fa-linkedin"></i></a>                        
+                            <a href="{{developer.links.github}}" title="GITHUB"><i class="fab fa-github"></i></a>                        
+                            <a href="{{developer.links.twitter}}" title="INSTAGRAM"><i class="fab fa-twitter"></i></a>                        
+                            <a href="mailto:admin@raghavdhingra.com" title="MAIL ME"><i class="fas fa-envelope"></i></a> 
+                        </div>                       
+                    </div>
+                    <div class="animTopToBottom developer-bottom-section">
+                        <div class="developer-single-hr"></div>
+                        <div>
+                            <div>Want to suggest some changes</div>
+                            <div>feel free to reach out to us</div>
+                            <div class="developer-contact-mail">    
+                                <a href="mailto:developers@helloworldofficial.in" style="color: #eee;text-transform: lowercase !important;" title="Mail Us | developers@helloworldofficial.in">developers@helloworldofficial.in</a>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <!--Developer Information____________________________________-->
+
+
+
+
+
+    <!--Nav Bar-->
+    <div class="nav" id="main_nav">
+        <div class="nav-inner">
+            <div class="nav-grid"> 
+                <div>
+                    <span class="nav-logo-text" id="nav-logo-text">&lt; / &gt; HelloWorld</span>
+                    
+                </div>   
+                <div>
+                    <ul class="nav_element2">
+                        {% if user.is_authenticated %}
+                        <li id="signedIn_more"><a><span>Hello! {{ username }} <i class="fas fa-sort-down"></i></span></a></li>
+                        {% else %}
+                        <li><a href="{% url 'auth' %}"><span>SignIn / SignUp</span></a></li>
+                        {% endif %}
+                    </ul>
+                    <ul class="nav_element" style="float: right;">
+                        <li><a href="{% url 'home' %}"><span class="nav-active1">home</span></a></li>
+                        <li><a href="{% url 'about' %}"><span class="nav-active2">about</span></a></li>
+                        <li id="drop_contact1"><a href="{% url 'contact' %}"><span class="nav-active3">contact</span></a></li>
+                        
+                        {% if user.is_authenticated %}
+                        <li id="drop_login1"><a href="{% url 'profile' %}" title="Profile"><span> Hi ! {{ username }} </span></a></li>
+                        {% else %}
+                        <li id="drop_login1"><a href="{% url 'auth' %}"><span>SignIn / SignUp</span></a></li>
+                        {% endif %}
+
+                        <li id="nav_more"><a><span class="nav-active4">more <i class="fas fa-sort-down"></i></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Nav Bar____________________-->
+    
+
+    <!--NavBar Drop Down-->
+    <div class="nav-drop-down" id="nav_dropdown">
+        <a href="{% url 'contact' %}"><li id="drop_contact2">Contact</li></a>
+
+        {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}" title="Visit Profile"><li class="drop-active5">Your Inventory</li></a>
+        {% else %}
+        <a href="{% url 'auth' %}"><li id="drop_login2">SignIn / SignUp</li></a>
+        {% endif %}
+
+        <a href="{% url 'team' %}"><li class="drop-active1">Know Our Team</li></a>
+        <a href="{% url 'event' %}"><li class="drop-active2">Events</li></a>
+        <a href="{% url 'gallery' %}"><li class="drop-active3">Gallery</li></a>
+        <!-- <a href="/hack-gtbit-2.0"><li>HACK-GTBIT 2.0</li></a> -->
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}"><li>Logout</li></a>
+        {% else %}
+        {% endif %}
+    </div>
+    <div class="nav-drop-down2" id="nav_dropdown2">
+        <a href="{% url 'profile' %}"><li>Profile</li></a>
+        <a href="{% url 'logout' %}"><li>Logout</li></a>
+    </div>
+    <!--NavBar Drop Down________________________-->
+
+
+    <!--Mobile Nav Bar-->
+    <div class="mobile_nav_bar" id="mobile_nav_bar">
+        <div class="mobile_nav_bar_inner">
+            <a href="{% url 'home' %}" class="mobile_nav_elmt home-after" title="HOME"><i class="fas fa-home"></i></a>
+            <a href="{% url 'about' %}" class="mobile_nav_elmt about-after" title="ABOUT"><i class="fas fa-list-ul"></i></a>
+            <a class="mobile_nav_elmt more-after" title="MORE"><i class="fas fa-plus-circle"></i></a>
+            <a href="{% url 'team' %}" class="mobile_nav_elmt team-after" title="TEAM"><i class="fas fa-users"></i></a>
+            <a href="{% url 'event' %}" class="mobile_nav_elmt event-after" title="EVENT"><i class="fas fa-clipboard-check"></i></a>
+        </div>
+    </div>
+    <div class="mobile_nav_bar2">
+        <div class="mobile_nav_bar_inner2">
+            <div class="nav-inner">
+                <div class="spacing-2"></div>
+                <div class="nav-grid"> 
+                    <div>
+                        <span class="nav-logo-text">&lt; / &gt; HelloWorld</span>
+                    </div>   
+                    <div>
+                        <ul class="nav_element2">
+                            {% if user.is_authenticated %}
+                            <a><li>Hello! <span> {{ username }} </span></li></a>
+                            {% else %}
+                            <a href="{% url 'auth' %}" style="overflow: hidden;"><li style="overflow: hidden;"><span>SignIn / SignUp</span></li></a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="spacing-2"></div> -->
+            </div>
+                
+            <div class="container">
+                <a href="{% url 'home' %}" class="mobile_nav_elmt2" title="HOME"><i class="fas fa-home"></i> Home</a>
+                <a href="{% url 'about' %}" class="mobile_nav_elmt2" title="ABOUT"><i class="fas fa-list-ul"></i> About</a>
+                <a href="{% url 'contact' %}" class="mobile_nav_elmt2" title="CONTACT"><i class="fas fa-user"></i> Contact</a>
+                <a href="{% url 'team' %}" class="mobile_nav_elmt2" title="TEAM"><i class="fas fa-users"></i> Team</a>
+                <a href="{% url 'gallery' %}" class="mobile_nav_elmt2" title="GALLERY"><i class="fas fa-image"></i> Gallery</a>
+                <a href="{% url 'event' %}" class="mobile_nav_elmt2" title="EVENTS"><i class="fas fa-clipboard-check"></i>Events</a>
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="mobile_nav_elmt2" title="Profile"><i class="far fa-id-card"></i> My Account</a>
+                <a href="{% url 'logout' %}" class="mobile_nav_elmt2" title="EVENTS"><i class="fas fa-sign-in-alt"></i> Logout</a>
+                {% else %}
+                <a href="{% url 'auth' %}" class="mobile_nav_elmt2" title="SIGNIN/SIGNUP"><i class="fas fa-sign-in-alt"></i> SignIn / SignUp</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <a class="mobile_nav_elmt3" onclick="openMobileNav();"><i class="fas fa-plus-circle" id="fa-plus-circle"></i></a>
+    <!--Mobile Nav Bar___________________________-->
+
+
+    <!--Content block-->
+    {% block content %}
+    {% endblock %}
+    <!--Content block_____________________-->
+
+
+    <!--Footer-->
+    <footer>
+        <div class="container">
+            <div class="footer_grid">
+                <div style="padding-bottom: 2em;">
+                    <h1 style="text-shadow: 0 0 3px var(--footer);padding-bottom: 0.5em;color: #eee;"> &lt; / &gt; HelloWorld</h1>
+                    <div style="padding: 0 0.5em;">
+                            <span style="font-size: 1.2em;">"There is nothing like a shared interest to draw people together."</span>
+                            <br><Br>
+                            You can find us on various platforms and get to know us more.<Br> 
+                            Just find and click the links below!
+                        <br><br>
+                        <div style="padding: 0.5em 0;">
+                            <b>Follow Us on - </b>
+                        </div>
+                        <span>
+                            <a href="https://www.facebook.com/helloworldteam/" title="FACEBOOK | HELLO WORLD"><i style="color: #3b5998;" class="fab fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/company/helloworldofficial/about/" title="LINKEDIN | HELLO WORLD"><i style="color: #0077B5;" class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/HelloWorldGTBIT" title="GITHUB | HELLO WORLD"><i style="color: #888;" class="fab fa-github"></i></a>
+                            <a href="https://www.instagram.com/official_hello_world/" title="INSTAGRAM | HELLO WORLD"><i style="color: #8a3ab9;" class="fab fa-instagram"></i></a>
+                            <a href="mailto:info@helloworldofficial.in" title="Mail Us | info@helloworldofficial.in"><i style="color: #e51937;" class="fas fa-envelope"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div style="padding: 0 1em;">
+                    <h3 style="padding-bottom: 0.4em;">Categories</h3>
+                    <div class="category_btn">
+                        <a href="{% url 'conduct' %}">Code Of Conduct</a>
+                        <!-- <a href="{% url 'terms' %}">Terms and Condition</a> -->
+                        <a href="{% url 'privacy' %}">Privacy Policy</a>
+                        <!-- <a href="{% url 'faq' %}">FAQs</a> -->
+                    </div>
+                    <h3 style="margin: 1em 0 0.5em 0;">Tags</h3>
+                    <div class="category_btn">
+                        <a>#HelloWorld</a>
+                        <a>#Tags</a>
+                        <a>#Tagging Lives</a>
+                        <a>#Making You Live</a>
+                    </div><br>
+                    <a href="{% url 'contact' %}" class="category_contact">Contact Us</a>
+                    <br><br><Br>
+                </div>
+                <div class="query_form">
+                    <h2 style="padding-bottom: 0.7em;">Get In Touch With Us</h2>
+                    <form method="POST" action="{% url 'footerForm' %}">
+                        {% csrf_token %}
+                        <input type="text" name="name" placeholder="Full Name" /><Br>
+                        <input type="email" name="email" placeholder="Email Address" /><br>
+                        <textarea name="message" placeholder="Ask Query"></textarea>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
+            </div>
+            <div class="spacing-1"></div>
+            <center>Made With <i style="color: red;transform: translateY(20%); padding: 0 0.3em;" class="fas fa-heart"></i> , keyboard by the <div class="animateColor">Web Team</div> - <span style="font-family: google-sans-bold;">HelloWorld</span></center>
+            <div class="spacing-1"></div>
+            <center>
+                <hr width="75%"/>
+                <div class="spacing-1"></div>
+                <span style="font-size: 0.8em;">
+                    &copy; HelloWorld 2020. All Rights Reserved.
+                    <br class="next-line2">
+                    <br class="next-line2">
+                    <br class="next-line2">
+                    <br class="next-line2">
+                </span>
+            </center>
+            <div class="spacing-1"></div>
+        </div>
+    </footer>
+    <!--Footer_______________________-->
+
+
+    <!--Scripts-->
+    <script type="text/javascript" src="{% static 'js/BaseNavBar.js' %}"></script>
+    <script>
+    //Nav Drop Down 2 Login/SignUp Mobile View
+    //{% if user.is_authenticated %}
+    const signedIn_more = document.getElementById("signedIn_more");
+    const nav_dropdown2 = document.getElementById("nav_dropdown2");
+    signedIn_more.onmouseover = () => {
+        posX = signedIn_more.offsetLeft;
+        nav_dropdown2.style.left = `${posX}px`;
+        nav_dropdown2.style.display = 'block';    
+    }
+
+    signedIn_more.onmouseout = () => {
+        nav_dropdown2.style.display = 'none';
+    }
+
+    nav_dropdown2.onmouseover = () => {
+        nav_dropdown2.style.display = 'block';
+    }
+
+    nav_dropdown2.onmouseout = () => {
+        nav_dropdown2.style.display = 'none';
+    }
+    //{% else %}
+    // {% endif %}
+
+    //Nav Drop Down 2 Login/SignUp Mobile View
+    </script>
+    <!--Scripts_______________________-->
+
+
+    <!--Scripts Block-->
+    {% block script %}
+    {% endblock %}
+    <!--Scripts Block_________________-->
+
+    <script>
+    
+    const devIcon = document.getElementById("dev-icon");
+const animdev = document.getElementsByClassName("animdev");
+const devIconImage = document.getElementById("dev-icon-image");
+const devOverlay = document.getElementById("dev-container-overlay");
+const devContent = document.getElementById("dev-container-content");
+
+var devIconVal = 0;
+devIcon.addEventListener("click",()=>{
+    if (devIconVal == 0){
+        for (var i = 0; i < animdev.length; i++){
+            animdev[i].classList.add("animdevAfter");
+        }
+        devIconImage.style.transition = "0.5s";
+        devIconImage.style.transform = "rotate(1800deg)";
+        devIconVal = 1;
+        setTimeout(()=>{ 
+            devIconImage.src = "{% static 'assets/logo/close.jpg' %}";
+        },250);
+        devOverlay.classList.remove("none");
+        setTimeout(() => {
+            devContent.classList.remove("none");
+        }, 1000);
+        devIcon.classList.add("dev-iconAfter");
+    }
+    else{
+        devContent.classList.add("none");
+        for (var i = 0; i < animdev.length; i++){
+            animdev[i].classList.remove("animdevAfter");
+        }
+        devIconImage.style.transform = "rotate(0deg)";
+        setTimeout(()=>{
+            devIconImage.src = "{% static 'assets/logo/dev-info.jpg' %}";
+        },250);
+        devOverlay.classList.add("none");
+        devIconVal = 0;
+        devIcon.classList.remove("dev-iconAfter");
+    }
+})
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+.developer-top-heading{
+    padding: 0.3em;
+    font-size: 1.2em;
+    margin: 0.5em;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+.dev-container-overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    color: #666;
+    text-transform: capitalize;
+    background: rgba(0,0,0,0.5);
+}
+
+.developer-image-container{
+    margin: 0.5em auto 0 auto;
+    width: max-content;
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+.developer-popUp-image{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.dev-container{
+    height: 540px;
+    width: 300px;
+    position: fixed;
+    top: 50%;
+    overflow: hidden;
+    background: #1a73e8;
+    left: 50%;
+    transform: translate(-50%,-50%) scaleX(0.05) scaleY(0.05);
+    font-family: google-sans-light,Arial, Helvetica, sans-serif;
+    font-size: 1.3em;
+    box-shadow: 0 0 10px 0 #888;
+    border-radius: 5px;
+    animation: anim 1.5s ease 1 forwards;
+}
+
+@keyframes anim{
+    20%{
+        transform: translate(-50%,-50%) scaleX(1) scaleY(0.05);
+    }
+    100%{
+        transform: translate(-50%,-57%) scaleX(1) scaleY(1);
+    }
+}
+
+.raghav{
+    color: #fff;
+    margin: 0.5em;
+    font-size: 1.5em;
+    font-family: google-sans-bold,Arial, Helvetica, sans-serif;
+}
+
+.raghav::before{
+    content: "";
+    height: 3px;
+    margin: 0.2em auto;
+    width: 75px;
+    background: #71B3FF;
+    display: block;
+}
+.developer-know-more-text{
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+    color: rgb(197, 224, 255);
+}
+.developer-links a{
+    color: #fff;
+    transition: 0.2s;
+    margin: 0 0.5em;
+}
+.developer-links a:hover{
+    opacity: 0.7;
+}
+.developer-single-hr{
+    border-top: 1px solid #71B3FF;
+    margin: 1em 0;
+}
+.developer-bottom-section{
+    text-align: center;
+    display: grid;
+    padding: 0.5em 0;
+    grid-template-rows: 1fr auto;
+    font-size: 0.8em;
+    color: #fff;
+}
+.developer-contact-mail{
+    margin: 3px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+.animTopToBottom{
+    animation: animTopToBottom 0.5s ease 1 forwards;
+}
+
+@keyframes animTopToBottom{
+    0%{transform: translateY(-30%);opacity: 0;}
+    100%{transform: translateY(0);opacity: 1;}
+}
